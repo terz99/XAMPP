@@ -1,6 +1,7 @@
 <!DOCTYPE>
 <?php
-  include("functions/functions.php");
+session_start();
+include("functions/functions.php");
  ?>
 <html>
   <head>
@@ -86,7 +87,15 @@
 
 
           <div id="products_box">
-            
+              <?php
+
+              if(!isset($_SESSION['customer_id'])){
+                  include("customer_login.php");
+              } else {
+                  include("payment.php");
+              }
+
+               ?>
           </div>
 
         </div>
