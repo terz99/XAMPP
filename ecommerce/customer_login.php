@@ -9,15 +9,15 @@
                 <td colspan="3"><h2>Login or register to buy!</h2></td>
             </tr>
 
-            <tr align="center">
-                <td style="float:right;"><b>Email:</b></td>
-                <td><input type="text" name="email" placeholder="Enter email here...">
+            <tr>
+                <td align="right" colspan="2"><b>Email:</b></td>
+                <td colspan="2"><input type="text" name="email" placeholder="Enter email here...">
                 </td>
             </tr>
 
-            <tr align="center">
-                <td style="float:right;"><b>Password:</b></td>
-                <td><input type="password" name="password"></td>
+            <tr>
+                <td align="right" colspan="2"><b>Password:</b></td>
+                <td colspan="2"><input type="password" name="password"></td>
             </tr>
 
             <tr align="center">
