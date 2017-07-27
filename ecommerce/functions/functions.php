@@ -1,10 +1,61 @@
 <?php
 
 $con = mysqli_connect("localhost", "root", "", "ecommerce");
+session_start();
 
 if(mysqli_connect_errno()){
     echo "<h1 style='color:white;'>Failed to connect to MySQL "
     . mysqli_connect_errno() . "</h1>";
+}
+
+function checkCustomer(){
+
+    global $con;
+
+    if(!isset($_SESSION["customer_id"])){
+        echo "
+                  <div id='shopping_cart'>
+
+                    <span style='float:right; color:white; font-size: 18px;
+                    padding: 5px; line-height: 40px;'>
+                    Welcome Guest!
+                    <a href='customer_login.php' style='color:yellow'>Log in</a>
+
+                  </div>";
+    } else {
+
+        $customerId = $_SESSION["customer_id"];
+        $getCustomer = "SELECT * FROM customers WHERE customer_id='$customerId'";
+        $runGetCustomer = mysqli_query($con, $getCustomer);
+        $rowCustomer = $runGetCustomer->fetch_assoc();
+        $customerName = $rowCustomer["customer_name"];
+
+
+        $totalPrice = total_price();
+        $totalItems = total_items();
+
+        echo "
+                  <div id='shopping_cart'>
+
+                    <span style='float:right; color:white; font-size: 18px;
+                    padding: 5px; line-height: 40px;'>
+                    Welcome $customerName!
+                    <b style='color:yellow;'>
+                      Shopping Cart -
+                  </b> Total Items: $totalItems Total Price: $$totalPrice
+                    <a href='cart.php' style='color:yellow;'>Go to Cart</a>
+                    <form method='post' action='' enctype='multipart/form-data'>
+                    <input type='submit' name='logout' value='Logout'>
+                    </form>
+                  </span>
+
+                  </div>";
+    }
+
+    if(isset($_POST['logout'])){
+        $_SESSION["customer_id"] = NULL;
+        echo "<script>alert('Goodbye!');window.open('index.php', '_self');</script>";
+    }
 }
 
 function getCats(){
@@ -159,7 +210,7 @@ function total_items(){
     $query = mysqli_query($con, $query_sin);
     $count = mysqli_num_rows($query);
 
-    echo $count;
+    return $count;
 }
 
 function total_price(){
@@ -178,8 +229,8 @@ function total_price(){
         $getProPriceSyntax = "SELECT * FROM products WHERE id='$pro_id'";
         $getProPrice = mysqli_fetch_array(mysqli_query($con, $getProPriceSyntax));
         $total_price = $total_price + $pro_qty*$getProPrice["price"];
+        return $total_price;
     }
-    echo "$$total_price";
 }
 
 
