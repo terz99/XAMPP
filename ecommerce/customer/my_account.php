@@ -1,12 +1,12 @@
 <!DOCTYPE>
 <?php
-include("functions/functions.php");
+  include("../functions/functions.php");
  ?>
 <html>
   <head>
 
     <title>My Online Shop</title>
-    <link rel="stylesheet" href="styles/styles.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../styles/styles.css" type="text/css" media="all">
   </head>
 
   <body>
@@ -16,8 +16,8 @@ include("functions/functions.php");
       <!-- Header starts here -->
       <div class="header_wrapper">
 
-        <a href="index.php"><img id="logo" src="images/logo.gif"></a>
-        <img id="banner" src="images/ad_banner.gif" style="width:800px;
+        <a href="index.php"><img id="logo" src="../images/logo.gif"></a>
+        <img id="banner" src="../images/ad_banner.gif" style="width:800px;
         height:100px;">
 
 
@@ -52,57 +52,33 @@ include("functions/functions.php");
       <!-- Content wrapper starts here -->
       <div class="content_wrapper">
 
-        <div id="sidebar">
 
-          <div id="sidebar_title">Categories</div>
-
-          <ul id="cats">
-            <?php getCats(); ?>
-          </ul>
-
-          <div id="sidebar_title">Brands</div>
-
-          <ul id="cats">
-            <?php getBrands(); ?>
-          </ul>
-
-        </div>
         <div id="content_area">
-
 
             <?php
 
             cart();
 
-checkCustomer();
+            checkCustomer();
 
             ?>
 
 
-
           <div id="products_box">
+              <form action="" method="post" enctype="multipart/form-data">
+                  <input type="submit" name="logout" value="Logout" style="float:left;">
+              </form>
+
               <?php
 
-              if(!isset($_SESSION['customer_id'])){
-                  echo "<script>window.open('customer_login.php', '_self');</script>";
-              } else {
+              if (isset($_POST["logout"])) {
 
-                  global $con;
-                  $ip = getIp();
-
-                  $getNumRows = "SELECT * FROM cart WHERE ip_address='$ip'";
-                  $runGetNumRows = mysqli_query($con, $getNumRows);
-                  $numRows = mysqli_num_rows($runGetNumRows);
-
-                  if($numRows == 0){
-                      echo "<script>alert('Buy something first!');
-                      window.open('index.php', '_self');</script>";
-                  } else {
-                      echo "<script>window.open('payment.php', '_self');</script>";
-                  }
+                  $_SESSION["customer_id"] = NULL;
+                  echo "<script>alert('Goodbye!');window.open('../index.php', '_self')</script>";
               }
 
                ?>
+
           </div>
 
         </div>

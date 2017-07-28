@@ -44,17 +44,9 @@ function checkCustomer(){
                       Shopping Cart -
                   </b> Total Items: $totalItems Total Price: $$totalPrice
                     <a href='cart.php' style='color:yellow;'>Go to Cart</a>
-                    <form method='post' action='' enctype='multipart/form-data'>
-                    <input type='submit' name='logout' value='Logout'>
-                    </form>
                   </span>
 
                   </div>";
-    }
-
-    if(isset($_POST['logout'])){
-        $_SESSION["customer_id"] = NULL;
-        echo "<script>alert('Goodbye!');window.open('index.php', '_self');</script>";
     }
 }
 
@@ -70,7 +62,7 @@ function getCats(){
     $cat_id = $row_cats['id'];
     $cat_title = $row_cats['title'];
 
-    echo "<li><a href='index.php?cat=$cat_id'>$cat_title</a></li>";
+    echo "<li><a href='/index.php?cat=$cat_id'>$cat_title</a></li>";
 
   }
 
@@ -180,22 +172,27 @@ function cart(){
 
     if(isset($_GET["add_cart"])){
 
-        global $con;
-
-        $ip_address = getIp();
-        $pro_id = $_GET["add_cart"];
-
-        $check_pro = "SELECT * FROM cart WHERE id='$pro_id' AND ip_address='$ip_address'";
-        $run_check = mysqli_query($con, $check_pro);
-
-        if(mysqli_num_rows($run_check) > 0){
-            echo "<script>window.open('index.php', '_self')</script>";
+        if(!isset($_SESSION["customer_id"])){
+            echo "<script>alert('Log in first.');
+            window.open('customer_login.php', '_self');</script>";
         } else {
+            global $con;
 
-            $insert_pro = "INSERT INTO cart (id, ip_address) VALUES ('$pro_id', '$ip_address')";
-            $run_pro = mysqli_query($con, $insert_pro);
+            $ip_address = getIp();
+            $pro_id = $_GET["add_cart"];
 
-            echo "<script>window.open('index.php', '_self')</script>";
+            $check_pro = "SELECT * FROM cart WHERE id='$pro_id' AND ip_address='$ip_address'";
+            $run_check = mysqli_query($con, $check_pro);
+
+            if(mysqli_num_rows($run_check) > 0){
+                echo "<script>window.open('index.php', '_self')</script>";
+            } else {
+
+                $insert_pro = "INSERT INTO cart (id, ip_address) VALUES ('$pro_id', '$ip_address')";
+                $run_pro = mysqli_query($con, $insert_pro);
+
+                echo "<script>window.open('index.php', '_self')</script>";
+            }
         }
     }
 
