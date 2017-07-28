@@ -1,6 +1,7 @@
 <!DOCTYPE>
 <?php
   include("../functions/functions.php");
+  include("../includes/db.php");
  ?>
 <html>
   <head>
@@ -52,6 +53,19 @@
       <!-- Content wrapper starts here -->
       <div class="content_wrapper">
 
+          <div id="sidebar">
+
+              <div id="sidebar_title">My Account</div>
+
+              <ul id="cats">
+                  <li><a href="my_account.php?my_orders">My Orders</a></li>
+                  <li><a href="my_account.php?edit_account">Edit account</a></li>
+                  <li><a href="my_account.php?change_password">Change Password</a></li>
+                  <li><a href="my_account.php?delete_account">Delete Account</a></li>
+                  <li><a href="logout.php">Logout</a></li>
+              </ul>
+
+          </div>
 
         <div id="content_area">
 
@@ -65,16 +79,27 @@
 
 
           <div id="products_box">
-              <form action="" method="post" enctype="multipart/form-data">
-                  <input type="submit" name="logout" value="Logout" style="float:left;">
-              </form>
 
               <?php
 
-              if (isset($_POST["logout"])) {
 
-                  $_SESSION["customer_id"] = NULL;
-                  echo "<script>alert('Goodbye!');window.open('../index.php', '_self')</script>";
+              $ip = getIp();
+              $customerId = $_SESSION["customer_id"];
+              $getCustomer = "SELECT * FROM customers WHERE customer_ip_address='$ip'
+              AND customer_id='$customerId'";
+              $runGetCustomer = mysqli_query($con, $getCustomer);
+              $customer = mysqli_fetch_array($runGetCustomer);
+
+              if(isset($_GET["my_orders"])){
+                  echo "My Order";
+              } else if(isset($_GET["edit_account"])){
+                  include("edit_account.php");
+              } else if(isset($_GET["change_password"])){
+
+              } else if(isset($_GET["delete_account"])){
+
+              } else {
+                  echo "<br><p style='margin-right:150px;'><b>Welcome " . $customer["customer_name"] . "!</b></p>";
               }
 
                ?>
