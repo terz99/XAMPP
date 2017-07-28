@@ -29,12 +29,12 @@
       <div class="menubar">
 
         <ul id="menu">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">All products</a></li>
-          <li><a href="#">My Account</a></li>
-          <li><a href="#">Sign up</a></li>
-          <li><a href="#">Shopping cart</a></li>
-          <li><a href="#">Contact us</a></li>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="all_products.php">All products</a></li>
+            <li><a href="customer/my_account.php">My Account</a></li>
+            <li><a href="customer_registration.php">Sign up</a></li>
+            <li><a href="cart.php">Shopping cart</a></li>
+            <li><a href="#">Contact us</a></li>
         </ul>
 
         <div id="form">

@@ -2,6 +2,10 @@
 <?php
   include("functions/functions.php");
   include("includes/db.php");
+
+  if(isset($_SESSION["customer_id"])){
+      echo "<script>window.open('customer/my_account.php', '_self')</script>";
+  }
  ?>
 <html>
   <head>
@@ -33,7 +37,7 @@
           <li><a href="index.php">Home</a></li>
           <li><a href="all_products.php">All products</a></li>
           <li><a href="customer/my_account.php">My Account</a></li>
-          <li><a href="">Sign up</a></li>
+          <li><a href="customer_registration.php">Sign up</a></li>
           <li><a href="cart.php">Shopping cart</a></li>
           <li><a href="#">Contact us</a></li>
         </ul>
