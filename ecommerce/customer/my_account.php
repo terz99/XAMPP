@@ -97,13 +97,13 @@
               echo "<br><p style='margin-right:150px;'><b>Welcome " . $customer["customer_name"] . "!</b></p>";
 
               if(isset($_GET["my_orders"])){
-                  
+
               } else if(isset($_GET["edit_account"])){
                   include("edit_account.php");
               } else if(isset($_GET["change_password"])){
                   include("change_password.php");
               } else if(isset($_GET["delete_account"])){
-
+                  include("delete_account.php");
               } else if(isset($_GET["logout"])){
                   include("logout.php");
               }

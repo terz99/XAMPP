@@ -149,7 +149,7 @@
                               echo "<script>alert('Password incorrect.');</script>";
                           }
                       } else {
-                          echo "<script>alert('Login successful!');</script>";
+                          echo "<script>alert('Login unsuccessful!');</script>";
                       }
                   }
 
