@@ -62,7 +62,7 @@
                   <li><a href="my_account.php?edit_account">Edit account</a></li>
                   <li><a href="my_account.php?change_password">Change Password</a></li>
                   <li><a href="my_account.php?delete_account">Delete Account</a></li>
-                  <li><a href="logout.php">Logout</a></li>
+                  <li><a href="my_account.php?logout">Logout</a></li>
               </ul>
 
           </div>
@@ -98,6 +98,8 @@
 
               } else if(isset($_GET["delete_account"])){
 
+              } else if(isset($_GET["logout"])){
+                  include("logout.php");
               } else {
                   echo "<br><p style='margin-right:150px;'><b>Welcome " . $customer["customer_name"] . "!</b></p>";
               }
