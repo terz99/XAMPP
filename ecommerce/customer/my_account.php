@@ -2,6 +2,10 @@
 <?php
   include("../functions/functions.php");
   include("../includes/db.php");
+
+  if(!isset($_SESSION["customer_id"])){
+      echo "<script>window.open('../customer_login.php', '_self');</script>";
+  }
  ?>
 <html>
   <head>
@@ -90,18 +94,18 @@
               $runGetCustomer = mysqli_query($con, $getCustomer);
               $customer = mysqli_fetch_array($runGetCustomer);
 
+              echo "<br><p style='margin-right:150px;'><b>Welcome " . $customer["customer_name"] . "!</b></p>";
+
               if(isset($_GET["my_orders"])){
-                  echo "My Order";
+                  
               } else if(isset($_GET["edit_account"])){
                   include("edit_account.php");
               } else if(isset($_GET["change_password"])){
-
+                  include("change_password.php");
               } else if(isset($_GET["delete_account"])){
 
               } else if(isset($_GET["logout"])){
                   include("logout.php");
-              } else {
-                  echo "<br><p style='margin-right:150px;'><b>Welcome " . $customer["customer_name"] . "!</b></p>";
               }
 
                ?>
