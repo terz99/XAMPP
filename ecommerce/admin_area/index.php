@@ -37,6 +37,10 @@
 
                 if(isset($_GET["insert_product"])){
                     include("insert_product.php");
+                } else if(isset($_GET["view_products"])){
+                    include("view_products.php");
+                } else if($_GET["edit_product"]){
+                    include("edit_product.php");
                 }
 
                  ?>
