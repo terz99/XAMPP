@@ -51,6 +51,8 @@
                     include("edit_cat.php");
                 } else if(isset($_GET["delete_cat"])){
                     include("delete_cat.php");
+                } else if(isset($_GET["view_brands"])){
+                    include("view_brands.php");
                 }
 
                  ?>
