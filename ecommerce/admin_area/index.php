@@ -45,6 +45,8 @@
                     include("delete_product.php");
                 } else if(isset($_GET["insert_cat"])){
                     include("insert_cat.php");
+                } else if(isset($_GET["view_cats"])){
+                    include("view_cats.php");
                 }
 
                  ?>
