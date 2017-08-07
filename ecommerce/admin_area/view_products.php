@@ -38,7 +38,8 @@
         <td><img src="product_images/<?php echo $proImage; ?>" width="60" height="60"></td>
         <td>$<?php echo $proPrice ?></td>
         <td><a href="index.php?edit_product=<?php echo $proId; ?>">Edit</a></td>
-        <td><a href="#">Delete</a></td>
+        <td><a href="index.php?delete_product=<?php echo $proId; ?>"
+            onclick="return confirm('Are you sure you want to delete this item?')">Delete</a></td>
     </tr>
 
     <?php } ?>

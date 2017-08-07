@@ -41,6 +41,10 @@
                     include("view_products.php");
                 } else if(isset($_GET["edit_product"])){
                     include("edit_product.php");
+                } else if(isset($_GET["delete_product"])){
+                    include("delete_product.php");
+                } else if(isset($_GET["insert_cat"])){
+                    include("insert_cat.php");
                 }
 
                  ?>
