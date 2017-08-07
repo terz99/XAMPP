@@ -29,7 +29,8 @@
          <td><?php echo $brandId; ?></td>
          <td><b><?php echo $brandTitle; ?></b></td>
          <td><a href="index.php?edit_brand=<?php echo $brandId; ?>">Edit</a></td>
-         <td><a href="index.php?delete_brand=<?php echo $brandId; ?>">Delete</a></td>
+         <td><a href="index.php?delete_brand=<?php echo $brandId; ?>"
+             onclick="return confirm('Are you sure?')">Delete</a></td>
      </tr>
 
      <?php } ?>
