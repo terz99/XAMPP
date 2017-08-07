@@ -49,6 +49,8 @@
                     include("view_cats.php");
                 } else if(isset($_GET["edit_cat"])){
                     include("edit_cat.php");
+                } else if(isset($_GET["delete_cat"])){
+                    include("delete_cat.php");
                 }
 
                  ?>

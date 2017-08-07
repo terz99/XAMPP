@@ -30,7 +30,8 @@
          <td><?php echo $catId; ?></td>
          <td><b><?php echo $catTitle; ?></b></td>
          <td><a href="index.php?edit_cat=<?php echo $catId; ?>">Edit</a></td>
-         <td><a href="#" onclick="return confirm('Are you sure?')">Delete</a></td>
+         <td><a href="index.php?delete_cat=<?php echo $catId; ?>"
+             onclick="return confirm('Are you sure?')">Delete</a></td>
      </tr>
 
      <?php } ?>
