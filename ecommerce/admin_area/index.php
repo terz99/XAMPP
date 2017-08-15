@@ -59,6 +59,8 @@
                     include("edit_brand.php");
                 } else if(isset($_GET["delete_brand"])){
                     include("delete_brand.php");
+                } else if(isset($_GET["view_customers"])){
+                    include("view_customers.php");
                 }
 
                  ?>
