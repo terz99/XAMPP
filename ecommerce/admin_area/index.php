@@ -1,4 +1,6 @@
-<!DOCTYPE>
+<?php
+include("../functions/functions.php");
+ ?>
 
 <!DOCTYPE html>
 <html>
@@ -35,32 +37,37 @@
 
                 <?php
 
-                if(isset($_GET["insert_product"])){
-                    include("insert_product.php");
-                } else if(isset($_GET["view_products"])){
-                    include("view_products.php");
-                } else if(isset($_GET["edit_product"])){
-                    include("edit_product.php");
-                } else if(isset($_GET["delete_product"])){
-                    include("delete_product.php");
-                } else if(isset($_GET["insert_cat"])){
-                    include("insert_cat.php");
-                } else if(isset($_GET["view_cats"])){
-                    include("view_cats.php");
-                } else if(isset($_GET["edit_cat"])){
-                    include("edit_cat.php");
-                } else if(isset($_GET["delete_cat"])){
-                    include("delete_cat.php");
-                } else if(isset($_GET["view_brands"])){
-                    include("view_brands.php");
-                } else if(isset($_GET["insert_brand"])){
-                    include("insert_brand.php");
-                } else if(isset($_GET["edit_brand"])){
-                    include("edit_brand.php");
-                } else if(isset($_GET["delete_brand"])){
-                    include("delete_brand.php");
-                } else if(isset($_GET["view_customers"])){
-                    include("view_customers.php");
+                if(!isset($_SESSION["admin"])){
+                    include("admin_login.php");
+                } else {
+
+                    if(isset($_GET["insert_product"])){
+                        include("insert_product.php");
+                    } else if(isset($_GET["view_products"])){
+                        include("view_products.php");
+                    } else if(isset($_GET["edit_product"])){
+                        include("edit_product.php");
+                    } else if(isset($_GET["delete_product"])){
+                        include("delete_product.php");
+                    } else if(isset($_GET["insert_cat"])){
+                        include("insert_cat.php");
+                    } else if(isset($_GET["view_cats"])){
+                        include("view_cats.php");
+                    } else if(isset($_GET["edit_cat"])){
+                        include("edit_cat.php");
+                    } else if(isset($_GET["delete_cat"])){
+                        include("delete_cat.php");
+                    } else if(isset($_GET["view_brands"])){
+                        include("view_brands.php");
+                    } else if(isset($_GET["insert_brand"])){
+                        include("insert_brand.php");
+                    } else if(isset($_GET["edit_brand"])){
+                        include("edit_brand.php");
+                    } else if(isset($_GET["delete_brand"])){
+                        include("delete_brand.php");
+                    } else if(isset($_GET["view_customers"])){
+                        include("view_customers.php");
+                    }
                 }
 
                  ?>

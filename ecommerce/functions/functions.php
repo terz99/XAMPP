@@ -1,5 +1,7 @@
 <?php
 
+$ADMINUSER = "admin";
+$ADMINPASS = "1234";
 $con = mysqli_connect("localhost", "root", "", "ecommerce");
 session_start();
 
