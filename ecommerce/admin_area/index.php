@@ -38,7 +38,7 @@ include("../functions/functions.php");
                 <?php
 
                 if(!isset($_SESSION["admin"])){
-                    include("admin_login.php");
+                    echo "<script>window.open('admin_login.php', '_self')</script>";
                 } else {
 
                     if(isset($_GET["insert_product"])){
@@ -67,6 +67,8 @@ include("../functions/functions.php");
                         include("delete_brand.php");
                     } else if(isset($_GET["view_customers"])){
                         include("view_customers.php");
+                    } else if(isset($_GET["logout"])){
+                        include("admin_logout.php");
                     }
                 }
 

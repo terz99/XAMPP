@@ -1,34 +1,33 @@
-<form action="" method="post" enctype="multipart/form-data">
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Admin Login</title>
+        <link rel="stylesheet" href="styles/login.css">
+        <script type="text/javascript" src="includes/login.js">
 
-    <table align="center" bgcolor="skyblue" width="795">
+        </script>
+    </head>
+    <body>
 
-        <tr align="center">
-            <td colspan="4"><h2>Admin Login</h2></td>
-        </tr>
+          <div class="login">
+        	<h1>Admin Login</h1>
+            <form method="post">
+            	<input type="text" name="admin_username" placeholder="Username" required>
+                <input type="password" name="admin_password" placeholder="Password" required>
+                <input class="btn btn-primary btn-block btn-large" type="submit"
+                name="admin_login" value="Login">
+            </form>
+        </div>
 
-        <tr align="center">
-            <td style="padding-left:100px;" align="right" colspan="2"><b>Admin username:</b></td>
-            <td style="padding-left:20px;"align="left" colspan="2"><input type="text" name="admin_username"
-                placeholder="Enter username..."></td>
-        </tr>
-
-        <tr align="center">
-            <td style="padding-left:100px;" align="right" colspan="2"><b>Admin password:</b></td>
-            <td style="padding-left:20px;"align="left" colspan="2"><input type="password"
-                name="admin_password"></td>
-        </tr>
-
-        <tr align="center">
-            <td colspan="4"><input type="submit" name="admin_login" value="Admin Login"></td>
-        </tr>
-
-    </table>
-
-</form>
+    </body>
+</html>
 
 <?php
 
 if(isset($_POST["admin_login"])){
+
+    include("../functions/functions.php");
+    include ("includes/db.php");
 
     $adminUser = $_POST["admin_username"];
     $adminPass = $_POST["admin_password"];
