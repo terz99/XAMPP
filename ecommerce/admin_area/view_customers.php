@@ -1,3 +1,7 @@
+<?php if(!isset($_SESSION["admin"])){
+    echo "<script>window.open('admin_login.php', '_self')</script>";exit();
+} ?>
+
 <table width="795" bgcolor="pink" align="center" style="float: right;">
 
     <tr align="center">

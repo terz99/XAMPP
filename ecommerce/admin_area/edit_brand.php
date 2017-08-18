@@ -1,5 +1,7 @@
 <?php
-
+if(!isset($_SESSION["admin"])){
+    echo "<script>window.open('admin_login.php', '_self')</script>";exit();
+}
 include("includes/db.php");
 
 $brandId = $_GET["edit_brand"];

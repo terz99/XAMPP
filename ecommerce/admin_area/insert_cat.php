@@ -1,3 +1,7 @@
+<?php if(!isset($_SESSION["admin"])){
+    echo "<script>window.open('admin_login.php', '_self')</script>";exit();
+} ?>
+
 <form action="" method="post" enctype="multipart/form-data">
 
     <table align="center" width="795" bgcolor="#187eae">

@@ -2,6 +2,10 @@
 
 <?php
 
+if(!isset($_SESSION["admin"])){
+	echo "<script>window.open('admin_login.php', '_self')</script>";exit();
+}
+
 include("includes/db.php");
 
 ?>
